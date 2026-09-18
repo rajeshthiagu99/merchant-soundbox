@@ -10,8 +10,8 @@ extension AnnouncementLanguageText on AnnouncementLanguage {
   };
   String get label => switch (this) {
     AnnouncementLanguage.english => 'English',
-    AnnouncementLanguage.hindi => 'हिन्दी',
-    AnnouncementLanguage.tamil => 'தமிழ்',
+    AnnouncementLanguage.hindi => 'Hindi',
+    AnnouncementLanguage.tamil => 'Tamil',
   };
 }
 

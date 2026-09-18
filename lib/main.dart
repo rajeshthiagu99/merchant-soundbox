@@ -10,6 +10,8 @@ import 'core/soundbox_platform.dart';
 
 void main() => runApp(const SoundboxApp());
 
+void _ignoreLanguage(AnnouncementLanguage value) {}
+
 class SoundboxApp extends StatelessWidget {
   const SoundboxApp({super.key});
   @override
@@ -20,8 +22,13 @@ class SoundboxApp extends StatelessWidget {
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff076b4c)),
       scaffoldBackgroundColor: const Color(0xfff5f5ef),
       useMaterial3: true,
+      fontFamily: 'NotoSans',
     ),
-    home: const SoundboxHome(),
+    home: const String.fromEnvironment('SCREEN') == 'ready'
+        ? const _ReadyScreen(language: AnnouncementLanguage.english, lastPayment: null)
+        : const String.fromEnvironment('SCREEN') == 'language'
+            ? _LanguageStep(onSelected: _ignoreLanguage)
+            : const SoundboxHome(),
   );
 }
 
